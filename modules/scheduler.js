@@ -19,7 +19,7 @@ exports.initAnnouncements = function(client) {
 			event.rule, 
 			async function(){ await exports.announce(client, event, false) }
 		)
-		scheduled_events[event.name] = job;
+		exports.scheduled_events[event.name] = job;
 
 		// Schedule preannouncement
 		let jobpre = schedule.scheduleJob(
@@ -27,7 +27,7 @@ exports.initAnnouncements = function(client) {
 			async function(){ await exports.announce(client, event, true) }
 		)
 	}
-	return scheduled_events;
+	return exports.scheduled_events;
 }
 
 exports.announce = async function(client, event, pre) {
@@ -40,7 +40,7 @@ exports.announce = async function(client, event, pre) {
 
 exports.schedulePreAnnouncement = function(client, event) {
 	let job = exports.scheduled_events[event.name]
-	
+
 	// Schedule preannouncement
 	let jobpre = schedule.scheduleJob(
 		utils.subtractMinutes(job.nextInvocation(), 5),
