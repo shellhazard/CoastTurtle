@@ -32,7 +32,9 @@ exports.initAnnouncements = function(client) {
 
 exports.announce = async function(client, event, pre) {
 	let chan = await client.channels.get(config.eventChannelId)
-	if (pre) { await chan.send(`The **${event.name}** will be open in **5 minutes.**`); return; }
+	let rolePingString = ""
+	if (event.roleId) rolePingString = `<@${event.roleId}> `
+	if (pre) { await chan.send(`${rolePingString}The **${event.name}** will be open in **5 minutes.**`); return; }
 	await chan.send(`**Can now register for the ${event.name}.**`)
 	// Reschedule preannouncement
 	exports.schedulePreAnnouncement(client, event)
@@ -62,7 +64,7 @@ exports.postUpdate = async function(client) {
 	let date = ""+new Date()
 	let body = `
 	__**${date}**__
-	
+
 	${result.trim()}
 	`
 	let msgs = utils.chunkSubstr(body, 1800)
