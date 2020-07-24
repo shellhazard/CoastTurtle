@@ -33,7 +33,7 @@ exports.initAnnouncements = function(client) {
 exports.announce = async function(client, event, pre) {
 	let chan = await client.channels.get(config.eventChannelId)
 	let rolePingString = ""
-	if (event.roleId) rolePingString = `<@${event.roleId}> `
+	if (event.roleId) rolePingString = `<@&${event.roleId}> `
 	if (pre) { await chan.send(`${rolePingString}The **${event.name}** will be open in **5 minutes.**`); return; }
 	await chan.send(`**Can now register for the ${event.name}.**`)
 	// Reschedule preannouncement
