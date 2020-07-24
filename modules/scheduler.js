@@ -60,13 +60,14 @@ exports.postUpdate = async function(client) {
 	if (!result) return false;
 	let chan = await client.channels.get(config.updateChannelId)
 	let date = ""+new Date()
-	await chan.send(`
+	let body = `
 	__**${date}**__
 	\`\`\`
 	${result.trim()}
 	\`\`\`
-	`)
+	`
+	let msgs = utils.chunkSubstr(body, 1800)
+	for (let m in msgs) await chan.send(msgs[m])
 	return true;
-
 }
 
