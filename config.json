@@ -2,7 +2,7 @@
     "hashfilePath": "./hash.txt",
     "updateUrl": "https://uptcsv.oryugentest.com:26922/RealA/Notice_English.txt",
     "updateChannelId": "735899445262286961",
-    "updateRule": "15 * * * *",
+    "updateRule": "*/15 * * * *",
     "eventChannelId": "735870252776161320",
     "events": [
     	{
@@ -29,6 +29,11 @@
     		"name": "Guild Battle",
     		"rule": "20 1/6 * * *",
     		"role_id": ""
-    	}
+    	},
+        {
+            "name": "Test, please ignore",
+            "rule": "*/1 * * * *",
+            "role_id": ""
+        }
     ]
 }
