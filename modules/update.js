@@ -22,7 +22,7 @@ exports.checkUpdate = async function() {
 
 exports.parse = function(text) {
 	while (/\[.*\](.+?)\[\-\]/.test(text)) {
-		text = text.replace(/\[.*\](.+?)\[\-\]/, "[$1]")
+		text = text.replace(/\[.*\](.+?)\[\-\]/, "**[$1]**")
 	}
 	return text;
 }
