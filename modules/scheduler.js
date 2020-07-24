@@ -62,9 +62,8 @@ exports.postUpdate = async function(client) {
 	let date = ""+new Date()
 	let body = `
 	__**${date}**__
-	\`\`\`
+	
 	${result.trim()}
-	\`\`\`
 	`
 	let msgs = utils.chunkSubstr(body, 1800)
 	for (let m in msgs) await chan.send(msgs[m])
